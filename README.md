@@ -11,4 +11,4 @@
 
 4. Base de Datos NoSQL (MongoDB)
 
-![Base de datos](./Unidad%201/img/Diagrama.png)
+![Base de datos](./Unidad%201/img/DiagramaGood.png)
