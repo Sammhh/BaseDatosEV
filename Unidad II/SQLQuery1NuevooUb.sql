@@ -374,4 +374,116 @@ from [Order Details]
 where Quantity in (12, 9, 40)
 
 
---Clausula between
+--Clausula between (simpre va el where)
+
+--between  avlorInicial and ValorFianl
+--mostrar los productos con precio entre 10 y 50
+--opcion 1
+SELECT * FROM Products
+where UnitPrice >= 10 and UnitPrice<=50;
+--opcion 2
+SELECT * FROM Products
+where UnitPrice between 10 and 50
+
+--selecionar todos los pedidos realizados, entre el 1ero de enero y el 30 de junio de 1997
+select * From Orders
+
+select * From Orders
+where OrderDate>='1997-01-01' and OrderDate<= '1997-06-01'
+
+select * From Orders 
+where OrderDate between '1997-01-01' and '1997-06-01'
+
+--seleccionar todos loe empleadoes entre 1992 y 1994 que trabajan en londres
+select * From Employees
+Where year (HireDate)>=1992 and
+	  year (HireDate)>=1994 and 
+	  City = 'London'
+
+--pedidos con flete (freigh) entre 50 y 200 enviados a alemania
+select * From Orders
+
+select ShipCountry as[Pais de Entrega],
+Freight as [Peso],
+OrderID as[Numero de Orden]
+from Orders 
+Where Freight>=50 and Freight<=200
+and (ShipCountry = 'France' or ShipCountry = 'Germany')
+
+--SELECCIIONAR TODOS LOS PRODUCTOS QUE TENGA UN PRECIO ENTRE 5 Y 20 DOLARES
+--O QUE SEAN DE LA CATAEGORIA 1, 2 0 3
+select * From Products 
+where (UnitPrice between 5 and 20)and CategoryID in (1, 2, 3)
+
+--EMPLEADOS CON NUMERO DE TRABAJADOR ENTRE 3 Y 7 QUE NO TRABAJAN EN LONDRES NI SEATTLE
+select * From Employees
+--campo calculado
+select EmployeeID as[Numero de Empleado],
+concat (FirstName, '' ,LastName) as [Nombre completo],
+city as [ciudad]
+from Employees
+where EmployeeID>=3 and EmployeeID<=7
+and (City<>'London' and City<>'Seattle')
+
+--CLAUSULA LIKE
+--Patrones:
+--1) %  Representa cero o mas caracteres en el patron de busqueda 
+--2) _  Representa un caracter en un caracter en el patron de busqueda
+--3) [] Se utiliza para defnir un conjuntode caracteres, buscando cualquiera de ellos en la posicion especifica
+--4)[^] (acento ciculflejo) Se utiliza para buscar caracteres que no estan, dentro del conjunto especifico
+
+--BUSACR LOS PRODUCTOS QUE EMPIECEN CON CHA
+select * from Products
+where ProductName like 'Cha%'
+and UnitPrice =  18
+
+--buscar todas los productos que terminen con e
+select * from Products
+where ProductName like  '%e'
+
+--selccionar todos los clientes cuyo nombre la empresa  continen la palabra "co" en cualquier parte
+select * from Customers
+where CompanyName like '%co%'
+
+--seleccinar empleados cuyo nombre comience con a y tenga exacatamente 5 caracteres
+select FirstName, LastName
+from Employees
+where FirstName like 'A_____'
+
+
+
+
+
+
+
+--Ejercicios TAREA
+
+ --Productos con categoría 1, 3 o 5
+SELECT * FROM Products
+WHERE CategoryID IN (1, 3, 5);
+
+--Clientes de México, Brasil o Argentina
+SELECT * FROM
+
+--Pedidos enviados por los transportistas 1, 2 o 3 y con flete mayor a 50
+
+
+--Empleados que trabajan en Londres, Seattle o Buenos Aires
+
+
+--Pedidos de clientes en Francia o Alemania, pero con un flete menor a 100
+
+
+--Productos con categoría 2, 4 o 6 y que NO estén descontinuados
+
+
+--Clientes que NO son de Alemania, Reino Unido ni Canadá
+
+
+--Pedidos enviados por transportistas 2 o 3, pero que NO sean a USA ni Canadá
+
+
+--Empleados que trabajan en 'London' o 'Seattle' y fueron contratados después de 1995
+
+
+--Productos de categorías 1, 3 o 5 con stock mayor a 50 y que NO están descontinuados
