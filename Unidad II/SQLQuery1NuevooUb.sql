@@ -450,8 +450,36 @@ select FirstName, LastName
 from Employees
 where FirstName like 'A_____'
 
+select * from Products
+where ProductName like '[A-M]%'
 
+--SELECCIONAR TODOS LOS PRODUCTOS QUE NO COMIENCEN CON A o B
+select * from Products
+where ProductName like '[^A-M]%'
 
+--seleccionar todo los productos donde el nombre
+--que comience con a pero no contenga la E
+Select * from Products
+where ProductName like 'a[^e]%'
+
+Select ProductID, ProductName, UnitPrice as 'Precio', UnitsInStock
+from Products
+order by 'Precio' desc
+
+--seleccionar los cleintes ordenados por el pais y dentro 
+--por ciudad
+--OPCION 1
+select CustomerID, Country, City
+from Customers
+where Country in ('Brazil','Germany')
+order by country asc, city desc
+
+--OPCION 2
+select CustomerID, Country, City, Region
+from Customers
+where (Country = 'Brazil'or Country ='Germany')
+and Region is not null
+order by country asc, city desc
 
 
 
@@ -487,3 +515,20 @@ SELECT * FROM
 
 
 --Productos de categorías 1, 3 o 5 con stock mayor a 50 y que NO están descontinuados
+
+
+
+
+--UNIDAD 2
+
+--consutas de agregado
+--nota solo devuelven un solo registro
+--sum, avg, count (*), max y min
+
+--cuantos clientes tengo
+
+
+select Region
+from Customers
+where Region is not null
+order by Region asc
