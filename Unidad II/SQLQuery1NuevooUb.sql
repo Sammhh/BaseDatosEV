@@ -131,6 +131,10 @@ references ordencompra(ordenid);
 
 
 
+
+--TEMA 2
+
+
 --Lenguaje SQL-LMD (insert, update, delete, select- CRUD)
 --Consultas Simples
 
@@ -185,7 +189,6 @@ select*, (UnitPrice * Quantity) as importe from [Order Details]
 
 select OrderDate,year(OrderDate) as año , month(OrderDate) as mes , day (OrderDate) as dia,
 CustomerID, EmployeeID from Orders;
-
 
 
 
@@ -468,6 +471,7 @@ order by 'Precio' desc
 
 --seleccionar los cleintes ordenados por el pais y dentro 
 --por ciudad
+
 --OPCION 1
 select CustomerID, Country, City
 from Customers
@@ -528,7 +532,124 @@ SELECT * FROM
 --cuantos clientes tengo
 
 
-select Region
-from Customers
-where Region is not null
-order by Region asc
+select  * from Orders
+select count(*)
+select count(ShipRegion)from Orders
+
+select * from Products
+
+--selecciona el precio mas bajo de los productos
+select min(UnitPrice), max (UnitPrice),
+avg(UnitsInStock)
+from Products
+
+--selccionar cuantos pedidos existen
+select count (*) as [Numero de Pedidos]
+from orders
+
+
+--calcula el total de dinero vendido
+select sum (UnitPrice * Quantity)
+from [Order Details]
+
+select sum (UnitPrice * Quantity - (UnitPrice * Quantity * Discount) ) as Total
+from [Order Details]
+
+--cualcula el total de unidades en stock de todos los prodcutos
+select sum (UnitsInStock) as 'Total Stock'
+from Products 
+
+--seleccionar el total de dinero que se gano en el ultimo trimestre de
+--1996
+select *  from Products [Order Details]
+
+--TEMA 3
+
+select count(CategoryID), Count (*)
+from Products
+
+--opcion 2
+select count(CategoryID), Count (*) as 'Numero de Pproducutos'
+from Products
+group by CategoryID
+
+
+
+--joins
+select Categories.CategoryName,
+count(*)
+from
+Categories
+inner join Products as p
+on Categories.CategoryID = p.CategoryID
+group by Categories.CategoryName
+
+--calcular el precio promedio de los productos por cada categoria
+select CategoryID, AVG (UnitPrice) as 'Precio Promedio'
+from Products
+group by CategoryID
+
+--selcciona el numero de pedidos realizados por cada empleado por el ultimo trimestre de 1996
+select * from Orders
+
+select EmployeeID, count(*) as 'Numero de Pedidos'
+from Orders
+group by EmployeeID
+
+Select * from Orders
+where OrderDate between '1996-10-01' and '1996-12-31'
+
+
+
+--Selecciona la suma total de unidsades vendidas por cada producto
+--opcion 1
+select top 5 ProductID,
+sum (Quantity) as 'Numero de Productos Vendidos'
+from [Order Details]
+group by ProductID
+order by 2 desc
+
+--opcion 2 especifica detalles mas especificos
+select orderid, ProductID,
+sum (Quantity) as 'Numero de Productos Vendidos'
+from [Order Details]
+group by OrderID, ProductID
+order by 2 desc
+
+
+--seleccionar el numero de productos por las categorias pero solo aquellos que tengan mas de 10 productos
+--where filtr filas
+--having filtra grupos de las listas
+--distinct lista de categorias
+
+--Paso 2
+select CategoryID, UnitsInStock
+from Products
+where CategoryID in (2, 4, 8)
+order by CategoryID
+
+--Paso 3 agrupacion
+select CategoryID,sum (UnitsInStock)
+from Products
+where CategoryID in (2, 4, 8)
+group by CategoryID
+order by CategoryID
+
+--paso 4 having
+select CategoryID,sum (UnitsInStock)
+from Products
+where CategoryID in (2, 4, 8)
+group by CategoryID
+having count (*)>10
+order by CategoryID
+
+--Listar las ordenes agrupadas por empleado, pero que solo mustre aquellos
+-- que hayan gestionado mas de 10 pedidos
+
+select distinct * from Orders
+
+select EmployeeID, CustomerID
+from Orders
+group by EmployeeID
+having count (*)>10
+order by OrderID
