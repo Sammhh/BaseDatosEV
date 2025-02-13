@@ -532,7 +532,7 @@ SELECT * FROM
 --cuantos clientes tengo
 
 
-select  * from Orders
+select + * from Orders
 select count(*)
 select count(ShipRegion)from Orders
 
