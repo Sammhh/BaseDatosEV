@@ -240,10 +240,41 @@ group by s.CompanyName
 
 
 --18.Obtener la cantidad de pedidos enviados por cada empresa de transporte
-select * from Orders
+select s.CompanyName as [Transportista], count (*) as [Total de pedidos]
+from Orders as o
+inner join shippers as s
+on o.ShipVia = s.ShipperID
+group by s.CompanyName
+
+
 
 
 
 --CONSULTAS AVANZADAS
+
 --19.Obtener los clientes que han realizado pedidos con mas de un producto
+select c.CompanyName, count(distinct ProductID) as [Numero de Producto]
+from Customers as c
+inner join Orders as o
+on c.CustomersID = o.CustomersID
+inner join [Order Details] as od
+on od.OrderID = o.OrderID
+group by c.CompanyName
+order by 2 Desc
+
+--20.Listar los empleados con la cantidad total de pedidos que han gestionado, y a que cleintes
+--les han vendido, agrupenlos por nombre completo y dentro de este nombre por cliente, ordenarlos
+--por la cantidad mayor de pedidos.
+
+--Opcion 2
+select concat (e.FistnName, '', e.LastName ) as [Nombre],
+c.CompanyName as [Cliente],
+count (OrderID) as [Numero de Ordenes]
+from Orders as o
+inner join Employes as e
+on o.EmployeeID = e.EmployeeID
+inner join Customers as c
+on o.CustomersID = c.CustomersID
+group by e.FirstName, e.LastName, c.CompanyName
+order by [Nombres] asc, [Cliente]
 
