@@ -66,13 +66,6 @@ where o.OrderDate between '1996-07-01' and '1996-10-30'
 --que se enviaron sus pedidos
 
 
-select c.CompanyName o ShipCountry
-from Orders as o
-inner join Customers as c
-on c.CustomersID = o.CustomersID
-from 
-
-
 --2.Obtener los productos y sus respectivos provedores
 SELECT p.ProductName AS 'Nombre del producto', s.CompanyName
 FROM Products AS p
