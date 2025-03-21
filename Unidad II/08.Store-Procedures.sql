@@ -33,6 +33,7 @@ begin
 select * from Customers
 where Country in (@pais, @pais2);
 end;
+
 --PASO 2
 --EJECUTA EL STORE PROCEDURE
 DEclare @p1 nvarchar (15) = 'Spain';
@@ -40,6 +41,8 @@ DEclare @p2 nvarchar (15) = 'Germany';
 --------------------------------------------
 --Especifica el campo deseado y lo ejecuta
 exec spu_customersporpais @p1, @p2;
+
+
 
 --Generar un reporte los datos de compra de un determinado cliente, en un ranog de fechas,
 --mostrando el monto total de compras por prodcuto, mediante un sp

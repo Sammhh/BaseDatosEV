@@ -29,7 +29,7 @@ select * from VistaCategoriasTodas
 where CategoryName = 'Beverages'
 --------------------
 
---crear una vista que permita visualizar solamnete los clientes  de mexico y brasil
+--crear una vista que permita visualizar solamenete los clientes  de mexico y brasil
              --A una vista no le puedes agregar un order by-----
 create or alter view VistaLatinos
 as
@@ -61,7 +61,7 @@ inner join VistaLatinos as vl
 on vl.CustomerID = o.CustomerID
 
 --CREAR una vista que contenga los datos de las ordenes
---los productos, categorias sde productos, 
+--los productos, categoriass de productos.
 
 create or alter view [dbo].[vistaordenescompra]
 as
@@ -107,7 +107,7 @@ select sum(importe) as [importe total]
 from vistaordenescompra
 where year([Fecha de orden])between '1995' and '1996'
 go
---se creo un avista dentro de otra vista
+--se creo una vista dentro de otra vista
 create or alter view vista_ordenes_1995_1996
 as
 select [Nombre del Cliente] as 'Nombre Cliente',
