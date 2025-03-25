@@ -81,7 +81,7 @@ on o.EmployeeID = e. EmployeeID
 --4.Listar los productos juntos con sus precios y la categoria a la que pertenecen
 select p.ProductName AS 'Nombre del producto', 
        p.UnitPrice AS 'Precio', 
-       c.CategoryName AS 'Categoría'
+       c.CategoryName AS 'Categorï¿½a'
 FROM Products AS p
 INNER JOIN Categories AS c
 ON p.CategoryID = c.CategoryID
@@ -95,7 +95,7 @@ from Orders as o
 --6.Listar las ordenes mostrando el numero de orden, el nombre del producto y la cantidad
 --que se vendio
 
-SELECT o.OrderID AS 'Número de Orden',
+SELECT o.OrderID AS 'Nï¿½mero de Orden',
        p.ProductName AS 'Nombre del Producto',
        od.Quantity AS 'Cantidad Vendida'
 FROM Orders AS o
@@ -178,7 +178,7 @@ inner join Orders as o
 on em.EmployeeID = o.EmployeeID
 where o.ShipCountry = 'Germany'
 
---13. Listar los productos junto con el nombre del proovedor y el país de origen
+--13. Listar los productos junto con el nombre del proovedor y el paï¿½s de origen
 select p.ProductName as [Nombre Producto],
 s.CompanyName as [Provedor],
 s.Country as [Pais de Oorigen]
