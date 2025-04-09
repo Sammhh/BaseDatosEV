@@ -180,10 +180,10 @@ from employees;
 
 select*, (UnitPrice * Quantity) as importe from [Order Details]
 
---selecionar las fechas de orden, año, mes y dia, el cliente 
+--selecionar las fechas de orden, aï¿½o, mes y dia, el cliente 
 --que las ordeno y el empleado que la realizo
 
-select OrderDate,year(OrderDate) as año , month(OrderDate) as mes , day (OrderDate) as dia,
+select OrderDate,year(OrderDate) as aï¿½o , month(OrderDate) as mes , day (OrderDate) as dia,
 CustomerID, EmployeeID from Orders;
 
 
@@ -250,7 +250,7 @@ where Quantity >= 40
 --muestr el nombre completo del empelado, su nuemero de empleado,
 --fecha de nacimiento, la ciudad y fecha de contratacion y esta debe ser de aquellos
 --esta debe ser de aquellos de 1993
---los resultados de sus encabezados deben ser mostrados en español
+--los resultados de sus encabezados deben ser mostrados en espaï¿½ol
 
 --campocalculado con concatenacion
 select EmployeeID as 'Numero',
@@ -298,7 +298,7 @@ where(year(BirthDate)>=1955 and year(BirthDate)<=1958
 and City ='London'
 
 --Selccionar los pedidos con flete de peso (freight) mayor a 100,
---y enviados a francia o españa
+--y enviados a francia o espaï¿½a
 select  OrderID, OrderDate, ShipCountry, Freigth
 from Orders
 Where Freight>100 and(ShipCountry = 'French' or ShipCountry='Spain')
@@ -364,7 +364,7 @@ where CategoryID = 1 or CategoryID = 3 or CategoryID =5
 
 select  ShipRegion, OrderID, OrderDate
 from Orders
-Where  ShipRegion in ('RJ', 'Táchira')
+Where  ShipRegion in ('RJ', 'Tï¿½chira')
 or ShipRegion is null
 
 --seleccionar las ordenes que tengan cantidades de 12, 9 y 40 y descuento de 0.15 o 0.5
