@@ -294,7 +294,7 @@ db.conexion.find(filtro, columnas)
 2) db.libros.find({titulo:1,_id:0})
 ```
 
-### Operador Exist(0permite saber si un campo se encuentra o no en un documento)
+### Operador Exist(permite saber si un campo se encuentra o no en un documento)
 ```json
 db.libros.find({editorial:{$exist:true}})
 
@@ -601,8 +601,8 @@ db.libros.find({}).limit(2)
 --cambiar ele lugar de los libros
 db.libros.find({}).skip(2)
 
-
-
+db.libros.drop()
+db.libros.dropDatebase()
 ```
 ### Método sort (Ordenar Documentos)
 
